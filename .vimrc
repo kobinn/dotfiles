@@ -30,11 +30,22 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-endwise'
+"NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'tomtom/tcomment_vim'
+"NeoBundle 'tpope/vim-endwise'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \    },
+      \ }
+
+NeoBundle 'Quramy/tsuquyomi'
 
 call neobundle#end()
 
@@ -64,6 +75,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=127
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=167
 let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
+let g:syntastic_typescript_tsc_fname = ''
 
 " ========================================
 " *-- scrooloose/nerdtree --*
@@ -166,7 +178,7 @@ set autoindent  "改行時に自動インデントする
 set shiftwidth=2 "自動インデントの文字数
 set smartindent  "ネスト時自動的にインデント数を増減
 set smarttab  "行頭余白タブでshiftwidthの数だけインデント
-set expandtab  "タブの代わりにスペースを使用する
+"set expandtab  "タブの代わりにスペースを使用する
 autocmd Filetype json setl conceallevel=0  "jsonのダブルクオーテーションは表示する
 
 "対応括弧のハイライトなし
